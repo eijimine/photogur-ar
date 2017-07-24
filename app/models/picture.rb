@@ -13,6 +13,7 @@ class Picture < ApplicationRecord
 
   def self.pictures_created_in_year(year)
     if year != nil
+      year = year.to_i
     dt = DateTime.new(year)
     start_date = dt.beginning_of_year
     end_date = dt.end_of_year

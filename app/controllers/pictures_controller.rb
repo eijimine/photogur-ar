@@ -3,16 +3,23 @@ class PicturesController < ApplicationController
     @pictures = Picture.all
     @most_recent_pictures = Picture.most_recent_five
     @older_than_a_month = Picture.created_before(1.month.ago)
-    @selected_year = Picture.pictures_created_in_year(params[:q])
-
+    @photos_from_2017 = Picture.pictures_created_in_year(2017)
+    @photos_from_2016 = Picture.pictures_created_in_year(2016)
+    @photos_from_2015 = Picture.pictures_created_in_year(2015)
+    @photos_from_2014 = Picture.pictures_created_in_year(2014)
 
   end
 
   def by_year
+    puts "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ #{params[:q]}"
+      @selected_year = Picture.pictures_created_in_year(params[:q])
+
+
   end
 
   def show
   @picture = Picture.find(params[:id])
+
   end
 
   def new
