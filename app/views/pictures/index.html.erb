@@ -5,3 +5,36 @@
   <p><%= picture.title %>, <%= picture.artist %></p>
   <%= link_to(image_tag(picture.url), "/pictures/#{picture.id}") %>
 <% end %>
+
+<h1>Most recent pictures</h1>
+<ul>
+  <% @most_recent_pictures.each do |picture| %>
+    <li><%= picture.title %></li>
+  <% end %>
+</ul>
+
+<h1>There are <%= @older_than_a_month.count %> pictures taken over a month ago</h1>
+<ul>
+  <% @older_than_a_month.each do |picture| %>
+    <li><%= picture.title %></li>
+  <% end %>
+</ul>
+
+<h1>Search pictures by year taken</h1>
+
+<p>
+  <%= form_tag("pictures/by_year", method: "get") do %>
+  <%= label_tag(:q, "Search for:") %>
+  <%= text_field_tag(:q) %>
+  <%= submit_tag("Search") %>
+<% end %>
+</p>
+
+<ul>
+  <% if @selected_year != nil %>
+  <% @selected_year.each do |picture| %>
+    <li><%= picture.title %></li>
+    <%= link_to(image_tag(picture.url), "/pictures/#{picture.id}") %>
+  <% end %>
+  <% end %>
+</ul>

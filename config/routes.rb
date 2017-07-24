@@ -12,4 +12,7 @@ Rails.application.routes.draw do
   get 'pictures/new' => 'pictures#new'
 
   get 'pictures/:id' => 'pictures#show'
+
+  get 'pictures/by_year' => 'pictures#by_year'
+
 end
